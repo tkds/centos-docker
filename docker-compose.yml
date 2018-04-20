@@ -1,0 +1,13 @@
+version: '2'
+services:
+  web: &app_base
+    build:
+      context: .
+      dockerfile: "Dockerfile"
+    command: /usr/sbin/httpd -D FOREGROUND
+    volumes:
+      - ./public-html:/var/www/html
+    ports:
+      - "8000:80"
+    tty: true
+    stdin_open: true
